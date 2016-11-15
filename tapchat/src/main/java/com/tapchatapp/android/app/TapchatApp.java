@@ -17,7 +17,7 @@
 package com.tapchatapp.android.app;
 
 import android.app.Activity;
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.StrictMode;
@@ -36,7 +36,14 @@ import javax.net.ssl.TrustManager;
 
 import dagger.ObjectGraph;
 
-public class TapchatApp extends Application {
+public class TapchatApp extends MultiDexApplication {
+
+    @Override
+    protected void attachBaseContext(android.content.Context base)
+    {
+        super.attachBaseContext(base);
+        android.support.multidex.MultiDex.install(this);
+    }
 
     public static final String PREF_SERVER_HOST         = "com.tapchatapp.android.pref_server_host";
     public static final String PREF_SERVER_PORT         = "com.tapchatapp.android.pref_server_port";

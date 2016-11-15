@@ -45,7 +45,7 @@ public class TapchatServiceStatusBar implements View.OnClickListener {
 
     public TapchatServiceStatusBar(Activity activity) {
         mActivity = activity;
-        TapchatApp.get().inject(this);
+        com.tapchatapp.android.app.TapchatApp.get().inject(this);
     }
 
     public void registerBus() {
